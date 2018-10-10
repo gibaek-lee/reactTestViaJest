@@ -8,23 +8,24 @@ More test about [Jest expect](https://jestjs.io/docs/en/expect.html#expectvalue)
 </p>
 
 ## Run a test code
-- Set a file name: ComponentName.test.js<br>
-- Filtering test command: $yarn test ComponentName.test.js<br>
-- Whole test command: $yarn test
+Set a file name: ComponentName.test.js<br>
+Filtering test command: $yarn test ComponentName.test.js<br>
+Whole test command: $yarn test
 
 ## Test sequence
-- component initial render test: about render()<br>
-  1. initial rendering test<br>
-  2. initial rendering snapshot matching test<br>
-- component function test
+1.component initial render test: about render()<br>
+- initial rendering test<br>
+- initial rendering snapshot matching test<br>
+
+2.component function test
 
 ## [Enzyme?](https://airbnb.io/enzyme/docs/api/)
-- Can make react component test code which cannot make by react-test-renderer.
-  1. DOM event simulation test(ex. button click, input modify, form submit, etc).
-  2. Find the string or props in DOM what you want to test.
-  3. Confirm the LifeCycle of react is run, correctly.
-  4. Snapshot test supported, also.
-  5. Etc, specific component test.
+Can make react component test code which cannot make by react-test-renderer.<br>
+- DOM event simulation test(ex. button click, input modify, form submit, etc).
+- Find the string or props in DOM what you want to test.
+- Confirm the LifeCycle of react is run, correctly.
+- Snapshot test supported, also.
+- Etc, specific component test.
 
 ## Reference
 - Velopert 블로그 - [Jest, Enzyme을 통한 리액트 컴포넌트 유닛 테스팅](https://velopert.com/3587)
