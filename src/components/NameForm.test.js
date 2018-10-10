@@ -41,7 +41,7 @@ describe('NameForm', () => {
       expect(component.find('input').exists()).toBe(true);
     })
     it('simulates input change', () => {
-      const mockedEvent = {
+      const mockedEvent = {//event.target.value에서 event를 빼고 나머지를 mock test 객체로 만든다.
         target: {
           value: 'hello'
         }
@@ -50,8 +50,8 @@ describe('NameForm', () => {
       expect(component.state().name).toBe('hello');
     })
     it('simulates form submit', () => {
-      const mockedEvent = {//onSubmit 하면 preventDefault 호출하므로 빈 함수로 테스트
-        preventDefault: () => null
+      const mockedEvent = {//e.preventDefault 에서 e 빼고 나머지를 mock test 객체로
+        preventDefault: () => null//onSubmit 하면 preventDefault 호출하므로 빈 함수로 테스트l
       }
       component.find('form').simulate('submit',mockedEvent);
       expect(component.state().name).toBe('');
