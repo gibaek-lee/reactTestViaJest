@@ -25,7 +25,16 @@ Can make react component test code which cannot make by react-test-renderer.<br>
 - Find the string or props in DOM what you want to test.
 - Confirm the LifeCycle of react is run, correctly.
 - Snapshot test supported, also.
-- Etc, specific component test.
+- Etc, specific component test.<br>
+
+More on Enzyme
+- Three type of rendering: Shallow, full, Static<br>
+- wrapper.find(selector): [DOM node finding](https://airbnb.io/enzyme/docs/api/ShallowWrapper/find.html)<br>
+- warpper.find(selector).simulate(event[,data]): [Mock test available](https://airbnb.io/enzyme/docs/api/ShallowWrapper/simulate.html)<br>
+
+## Test code files
+- Jest + react-test-renderer: Counter.test.js, NameList.test.js
+- Jest + Enzyme: NameForm.test.js
 
 ## Reference
 - Velopert 블로그 - [Jest, Enzyme을 통한 리액트 컴포넌트 유닛 테스팅](https://velopert.com/3587)
