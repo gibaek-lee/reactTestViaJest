@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
-import Counter from './components/Counter';
-import NameForm from './components/NameForm';
-import NameList from './components/NameList';
+import CounterContainer from './containers/CounterContainer';
+import NameFormContainer from './containers/NameFormContainer';
+import NameListContainer from './containers/NameListContainer';
 
 class App extends Component {
-  state = {
-    nameList : ['긴냥이', '이기백']
-  }
-  onInsert = (name) => {
-    this.setState(
-      ({nameList}) => ({ nameList: nameList.concat(name) })
-    )
-  }
   render() {
-    const { nameList } = this.state;
-    const { onInsert } = this;
-
     return (
       <div>
-        <Counter />
+        <CounterContainer />
         <hr />
         <h1>Name List</h1>
-        <NameForm onInsert={onInsert} />
-        <NameList nameList={nameList} />
+        <NameFormContainer />
+        <NameListContainer />
       </div>
     );
   }
