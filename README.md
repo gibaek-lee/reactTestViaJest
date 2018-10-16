@@ -37,13 +37,14 @@ More on Enzyme
 - Jest + Enzyme: NameForm.test.js
 
 ## React stucture + Redux
+Compare structure before apply Redux and after<br>
 <p align="center">
-  <img width="45%" src="./image/ReactBeforeApplyRedux.png"><br>
+  <img width="80%" src="./image/ReactBeforeApplyRedux.png"><br>
   React structure before apply Redux
-</p>
+</p><br>
 
 <p align="center">
-  <img width="45%" src="./image/ReactAfterApplyRedux.png"><br>
+  <img width="80%" src="./image/ReactAfterApplyRedux.png"><br>
   React structure after apply Redux
 </p>
 
