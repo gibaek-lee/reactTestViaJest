@@ -36,6 +36,17 @@ More on Enzyme
 - Jest + react-test-renderer: Counter.test.js, NameList.test.js
 - Jest + Enzyme: NameForm.test.js
 
+## React stucture + Redux
+<p align="center">
+  <img width="45%" src="./image/ReactBeforeApplyRedux.png"><br>
+  React structure before apply Redux
+</p>
+
+<p align="center">
+  <img width="45%" src="./image/ReactAfterApplyRedux.png"><br>
+  React structure after apply Redux
+</p>
+
 ## Reference
 - Velopert 블로그 - [Jest, Enzyme을 통한 리액트 컴포넌트 유닛 테스팅](https://velopert.com/3587)
 - Simple test, Snapshot test - [react-test-renderer](https://reactjs.org/docs/test-renderer.html)
