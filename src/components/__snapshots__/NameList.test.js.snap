@@ -2,10 +2,14 @@
 
 exports[`NameList matches snapshot 1`] = `
 <div>
-  <li>
+  <li
+    key="0"
+  >
     긴냥이
   </li>
-  <li>
+  <li
+    key="1"
+  >
     이기백
   </li>
 </div>

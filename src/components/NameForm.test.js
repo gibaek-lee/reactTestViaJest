@@ -1,38 +1,28 @@
 import React from 'react';
-//import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-/* enzyme : https://airbnb.io/enzyme/docs/api/
-react-test-renderer에서 할 수 없는 테스트를 할 수 있다.
-1. DOM 이벤트 시뮬레이트(ex.버튼클릭, 인풋수정, 폼 등록)
-2. 특정 DOM에 특정 문자열이 있는지, 특정 props가 설정됐는지,
-3. 모든 LifeCycle이 문제 없이 돌아가는지 확인
-등등 많은 리액트 컴포넌트 테스팅 수행 가능하다.
-
-테스트 렌더러 조합
-1. 간단한 테스트, snapshot test: Jest + react-test-renderer
-2. 세부적인 테스트(snapshot 포함): Jest + enzyme
-*/
 import NameForm from './NameForm';
 
 describe('NameForm', () => {
   let component = null;
+  const mockChange = jest.fn();
+  const mockInsert = jest.fn();
+  const mockSubmit = jest.fn();
 
   /* component initial render test */
   it('renders correctly', () => {
-    /* render에 부모컴포넌트에서 전달되는 함수는 영향을 미치지 않으므로
-    onInsert를 넣지 않아도 된다. */
-    //component = renderer.create(<NameForm />);
-    component = shallow(<NameForm />);
+    component = shallow(<NameForm name={'고양이'} onChange={mockChange} onInsert={mockInsert} onSubmit={mockSubmit}/>);
   });
 
   it('matches snapshot', () => {
-    //const tree = component.toJSON();
-    //expect(tree).toMatchSnapshot();
     expect(component).toMatchSnapshot();
   })
 
-  /* component function test */
-  //how? enzyme!
+  /* redux + react: props.name 전달 가정한 render test */
+  it('is 고양이', () => {
+    expect(component.find('input').props().value).toBe('고양이');
+  });
+
+  /* redux + react: props.change() props.insert() props.submit() 전달 가정한 render test */
   describe('insert new text', () => {
     it('has a form', () => {//form 존재여부 확인
       expect(component.find('form').exists()).toBe(true);
@@ -47,14 +37,16 @@ describe('NameForm', () => {
         }
       };
       component.find('input').simulate('change',mockedEvent);
-      expect(component.state().name).toBe('hello');
+      //local state가 없으므로 name값의 변화는 테스트할 수 없고 그 변화를 주는 onChange함수가 props로 넘어왔을 때 잘 불려지는지만 확인 가능
+      expect(mockChange.mock.calls.length).toBe(1);
     })
     it('simulates form submit', () => {
       const mockedEvent = {//e.preventDefault 에서 e 빼고 나머지를 mock test 객체로
         preventDefault: () => null//onSubmit 하면 preventDefault 호출하므로 빈 함수로 테스트l
       }
       component.find('form').simulate('submit',mockedEvent);
-      expect(component.state().name).toBe('');
+      expect(mockInsert.mock.calls.length).toBe(1);
+      expect(mockSubmit.mock.calls.length).toBe(1);
     })
   })
 })

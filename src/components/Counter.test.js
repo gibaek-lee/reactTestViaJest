@@ -1,61 +1,35 @@
 import React from 'react';
-//react test renderer manual: https://reactjs.org/docs/test-renderer.html
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Counter from './Counter';
-
-/*
-Test code
-- Manual about Jest Expect: https://jestjs.io/docs/en/expect.html#expectvalue
-- Basic code structure
-
-describe('Target',() => {
-  describe('innerTarget1',() => {
-    it('describe' ,() => {
-      expect( function1-1() ).toBe('expectedVal1');
-    });
-    it('describe' ,() => {
-      expect( function1-2() ).toBe('expectedVal2');
-    });
-  });
-  describe('innerTarget2',() => {
-    it('describe' ,() => {
-      expect( function2-1() ).toBe('expectedVal1');
-    });
-    it('describe' ,() => {
-      expect( function2-2() ).toBe('expectedVal2');
-    });
-  });
-);
-
-*/
 
 describe('Counter', () => {//describe
   let component = null;
+  //jest mock functions(https:jestjs.io/docs/en/mock-functions.html)
+  const mockIncrease = jest.fn();
+  const mockDecrease = jest.fn();
 
   /* component initial render test */
-  it('renders correctly', () => {//initial rendering test
-    component = renderer.create(<Counter />);
+  it('renders correctly', () => {
+    component = shallow(<Counter value={700} onIncrease={mockIncrease} onDecrease={mockDecrease}/>);
   });
 
+  /* snapshot test */
   it('matches snapshot', () => {//initial rendering snapshot matching test
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   })
 
-  /* component functions test */
-  it('increases correctly', () => {//increase fucntion test
-    component.getInstance().onIncrease();
-    expect(component.getInstance().state.value).toBe(2);
-
-    const tree = component.toJSON();//re-render
-    expect(tree).toMatchSnapshot();
+  /* redux + react: props.value 전달 가정한 rendering test*/
+  it('is 700', () => {
+    expect(component.find('h2').text()).toBe('700');
   });
 
-  it('decreases correctly', () => {//decrease function test
-    component.getInstance().onDecrease();
-    expect(component.getInstance().state.value).toBe(1);
-
-    const tree = component.toJSON();//re-render
-    expect(tree).toMatchSnapshot();
+  /* redux + react: props.increase() props.decrease() 전달 가정하고, 호출됐을 때 호출여부 test */
+  it('calls functions', () => {
+    const buttons = component.find('button');
+    buttons.at(0).simulate('click');
+    buttons.at(1).simulate('click');
+    expect(mockIncrease.mock.calls.length).toBe(1);
+    expect(mockDecrease.mock.calls.length).toBe(1);
   });
+
 });
