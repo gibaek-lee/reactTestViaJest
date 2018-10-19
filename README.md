@@ -44,10 +44,21 @@ Compare structure before apply Redux and after<br>
 </p><br>
 
 <p align="center">
-  <img width="80%" src="./image/ReactAfterApplyRedux.png"><br>
+  <img width="80%" src="./image/ReactAfterApplyRedux_ver2.0.png"><br>
   React structure after apply Redux
 </p>
 
+## Redux test with React Components
+Apply redux test on react+redux
+<p align="center">
+  <img width="80%" src="./image/reactReduxTestSequence.png"><br>
+  React + Redux app test concept
+</p>
+
 ## Reference
-- Velopert 블로그 - [Jest, Enzyme을 통한 리액트 컴포넌트 유닛 테스팅](https://velopert.com/3587)
+- Velopert 블로그<br>
+[Jest, Enzyme을 통한 리액트 컴포넌트 유닛 테스팅](https://velopert.com/3587)<br>
+[React + Redux 앱 테스트](https://velopert.com/3591)<br>
+action type, action creator, reducer 통합된 store 만들기 참조<br>
+axios 이용해 post component 만들기 참조<br>
 - Simple test, Snapshot test - [react-test-renderer](https://reactjs.org/docs/test-renderer.html)
